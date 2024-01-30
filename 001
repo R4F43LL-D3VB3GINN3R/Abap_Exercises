@@ -1,1 +1,101 @@
+using System.Net.Http.Headers;
+using System.Runtime.Serialization;
+using System.Security.Cryptography;
 
+namespace Atividade1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Imprime mensagem na console (print em python)
+            Console.WriteLine("Hello, World!");
+
+            //Exemplo de variaveis em C#
+
+            //variavel de numero inteiro
+            int numerointeiro = 42;
+            Console.WriteLine("Numero Inteiro: " + numerointeiro);
+
+            //Variavel de ponto flutuante (Double)
+            double numPontoFlutuante = 3.14;
+            Console.WriteLine("Numero de ponto flutuante: " + numPontoFlutuante);
+
+            //Variavel de ponto flutuante (Float)
+            float numPontoFlutuanteFloat = 3.141596f;
+            Console.WriteLine("Numero de ponto flutuante: " + numPontoFlutuanteFloat);
+
+            //Variavel do tipo carater
+            char caracter = 'A';
+            Console.WriteLine("Caracter: " + caracter);
+
+            //variavle do tipo booleano
+            bool verdadeOuFalso = true;
+            Console.WriteLine("Booleano: " +  verdadeOuFalso);
+
+            //Variavel de cadeia de caracteres (string)
+            string texto = "Isto é uma string";
+            Console.WriteLine("String: " +  texto);
+
+            //Exemplos de casting
+
+            //Casting implicito de int para double
+            double castimplicito = numerointeiro;
+            Console.WriteLine("Casting implicito (int para doublr): " + castimplicito);
+
+            //Casting explicito de double para int (pode resultar em perda de dados)
+            int castExplicito = (int)numPontoFlutuante;
+            Console.WriteLine("Casting explicito (double para int): " + castExplicito);
+
+            //Exemplo de um ciclo for que imprime numeros de 1 a 5
+            Console.WriteLine("Exemplo de loop for: ");
+            for (int i = 1; i <= 5; i++)
+            {
+                Console.WriteLine(i);
+            }
+
+            /*Exercicio 1 - Crie um programa que declare duas variaveis e que faça o seguinte:
+            -Atribua valores diferentes a cada variavel
+            -Imprima a soma das duas variaveis
+            -Imprima a diferença entre a primeira e a segunda variavel*/
+            int num1 = 50;
+            int num2 = 45;
+            Console.WriteLine(num1 + num2);
+            Console.WriteLine(num1 - num2);
+
+            /*Exercicio 2 - Crie um programa que declare duas variaveis e que faça o seguinte:
+            -Atribua valores diferentes a cada variavel
+            -Imprima a multiplicação das duas variaveis
+            -Imprima a divisão entre a primeira e a segunda variavel*/
+
+            float num3 = 31.2345f;
+            float num4 = 78.73f;
+            Console.WriteLine(num3 * num4);
+            Console.WriteLine(num3 / num4);
+
+            /*Exercicio 3 - Crie um programa que solicite ao usuario tres numeros e calcule a media 
+             dos tres. Imprime o resultado*/
+
+            /*Console.WriteLine("Insira um numero: ");
+            int num5= Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Insira outro numero: ");
+            int num6 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Insira outro numero: ");
+            int num7 = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("A média dos tres numeros é " + (num5 * num6 * num7) / 3); */
+
+            //Exercicio de cima a usar arrays
+
+            int[] array = new int[2];
+
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine("Insira um numero: " + (i + 1));
+                array[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            int media = (array[0] + array[1] + array[2]) / 3;
+            Console.WriteLine("A média dos tres numeros é " + media);
+        }
+    }
+}
