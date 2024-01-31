@@ -27,3 +27,32 @@ Develop the program using available control flow structures and mathematical ope
 "---------------------------------------------------------------------------------------------------------   
 "---------------------------------------------------------------------------------------------------------      
 "---------------------------------------------------------------------------------------------------------      
+
+002 - 
+
+Exercise Statement: Enhanced Salary Bonus Calculator in SAP ABAP
+
+You have been tasked with developing a SAP ABAP program to calculate salary bonuses, taking the challenge to include additional considerations. The program should interact with the user to obtain an employee's annual salary and the corresponding currency, with the bonus calculated based on the company's specific criteria:
+
+Annual Salary < 50000: 5% Bonus
+Annual Salary between 50000 and 100000: 10% Bonus
+Annual Salary > 100000: 15% Bonus
+However, the program now needs to include the following complexities:
+
+Currency Conversion:
+
+Users should be able to provide the salary in different currencies, including 'USD,' 'EUR,' and 'GBP.' The program should automatically convert the salary to the company's standard currency ('USD') before calculating the bonus.
+Additional Validation:
+
+In addition to ensuring that the salary is positive, the program must now validate whether the salary is below or above limits specified by the company. If the salary is outside these limits, an informative message should be displayed.
+Bonus History:
+
+The program should maintain a record of bonuses granted to employees. Each time a new bonus is calculated, the program should display the accumulated bonus history for the employee.
+User Interface Enhancements:
+
+Develop a more user-friendly interface, allowing users to choose the currency to be used and providing clear visual information about bonus calculation and accumulated history.
+Ensure that the program is designed to handle unforeseen situations, such as unsupported currencies, extreme salary values, or invalid inputs. Utilize advanced control flow structures, string manipulation, and additional considerations to make the program robust and efficient. Test the program extensively with a variety of scenarios to ensure its functionality and accuracy.
+
+"---------------------------------------------------------------------------------------------------------   
+"---------------------------------------------------------------------------------------------------------      
+"---------------------------------------------------------------------------------------------------------      
