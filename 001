@@ -19,3 +19,42 @@ write lv_sal.
 "------------------------------------------------------------------------------------------------------------------------"
 "------------------------------------------------------------------------------------------------------------------------"
 "------------------------------------------------------------------------------------------------------------------------"
+
+report z001.
+
+parameters: lv_sal   type p decimals 2 length 7,
+            lv_coin  type char7.
+
+data:  lv_nwsal type p decimals 2 length 7,
+       lv_bonus type p decimals 2.
+
+lv_nwsal = lv_sal.
+
+if lv_sal > 0.
+  if lv_coin = 'USD' or lv_coin = 'EUR' or lv_coin = 'GBP'.
+    if lv_sal < 50000.
+      lv_bonus = '0.05'.
+      lv_nwsal = lv_sal + ( lv_sal * lv_bonus ).
+      lv_bonus = lv_sal * lv_bonus.
+      write: 'Salário Original:', lv_sal, '+ Bônus (5%):', lv_bonus, '- Novo Salário:', lv_nwsal.
+    elseif lv_sal = 50000 and lv_sal < 100000.
+      lv_bonus = '0.1'.
+      lv_nwsal = lv_sal + ( lv_sal * lv_bonus ).
+      lv_bonus = lv_sal * lv_bonus.
+      write: 'Salário Original:', lv_sal, '+ Bônus (10%):', lv_bonus, '- Novo Salário:', lv_nwsal.
+    else.
+      lv_bonus = '0.15'.
+      lv_nwsal = lv_sal + ( lv_sal * lv_bonus ).
+      lv_bonus = lv_sal * lv_bonus.
+      write: 'Salário Original:', lv_sal, '+ Bônus (15%):', lv_bonus, '- Novo Salário:', lv_nwsal.
+    endif.
+  else.
+    write 'Escolha um tipo de moeda válida'.
+  endif.
+else.
+  write 'Seu salário deve ser positivo'.
+endif.
+
+"------------------------------------------------------------------------------------------------------------------------"
+"------------------------------------------------------------------------------------------------------------------------"
+"------------------------------------------------------------------------------------------------------------------------"
