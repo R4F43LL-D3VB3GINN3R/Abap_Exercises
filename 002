@@ -1,0 +1,65 @@
+report z001.
+
+parameters: lv_sal  type p decimals 2 length 7, "Base Salary.
+            lv_coin type char7.                 "Coin Type.
+
+data: lv_nwsal  type p decimals 2 length 7, "Salary After Bonus.
+      lv_bonus  type p decimals 2,          "Bonus Salary.
+      lv_eur    type p decimals 2,          "EUR/USD.
+      lv_gbp    type p decimals 2,          "GBP/USD.
+      lv_conv   type p decimals 2,          "Monetary Conversion's Price.
+      lv_oldsal type p decimals 2.          "Before Monetary Conversion.
+
+lv_eur = '1.08'.    "EUR/USD.
+lv_gbp = '1.27'.    "GBP/USD.
+lv_oldsal = lv_sal. "Variable to stores this value.
+lv_nwsal = lv_sal.  "Variable to stores this value.
+
+if lv_sal > 0.                                              "If Salary is negative...
+  if lv_coin = 'USD' or lv_coin = 'EUR' or lv_coin = 'GBP'. "If the currencies are both of these three...
+    
+    "Convert Currencies and Display Messages
+    
+    if lv_coin = 'EUR'.                                     "If the currencies is Euro...
+    lv_sal = lv_sal * lv_eur.                               "Salary is converted to USD.
+    write: /'Salário em Euros:', lv_oldsal.                 "Display Message.
+  elseif lv_coin = 'GBP'.                                   "Else if the currencies is Pounds...
+    lv_sal = lv_sal * lv_gbp.                               "Salary is converted to USD.
+    write: /'Salário em Libras:', lv_oldsal.                "Display Message.
+  endif.                                                    "Close if.
+  
+    "----------------------------------------
+  
+    "Adds Bonuses and Display Messages
+  
+    if lv_sal < 50000.                           "If Salary is less than 50000...                  
+      lv_bonus = '0.05'.                         "Define bonus.
+      lv_nwsal = lv_sal + ( lv_sal * lv_bonus ). "Sets New Salary after the Bonus increase.
+      lv_bonus = lv_sal * lv_bonus.              "Redefine Bonus.
+      write: /'Salário Original:', lv_sal,
+             /'Bônus (5%):', lv_bonus,
+             /'Novo Salário:', lv_nwsal.         "Display Message.
+      
+    elseif lv_sal = 50000 and lv_sal < 100000.   "Else if Salary is equal 50000 and less than 100000...
+      lv_bonus = '0.1'.                          "Define bonus.
+      lv_nwsal = lv_sal + ( lv_sal * lv_bonus ). "Sets New Salary after the Bonus increase.
+      lv_bonus = lv_sal * lv_bonus.              "Redefine Bonus.
+      write: /'Salário Original:', lv_sal,
+             /'Bônus (5%):', lv_bonus,
+             /'Novo Salário:', lv_nwsal.         "Display Message.
+      
+    else.                                        "Otherwise the Salary does not have these values...
+      lv_bonus = '0.15'.                         "Define bonus.
+      lv_nwsal = lv_sal + ( lv_sal * lv_bonus ). "Sets New Salary after the Bonus increase.
+      lv_bonus = lv_sal * lv_bonus.              "Redefine Bonus.
+      write: /'Salário Original:', lv_sal,
+             /'Bônus (5%):', lv_bonus,
+             /'Novo Salário:', lv_nwsal.         "Display Message.
+    endif.                                       "Close if.
+    
+  else.                                          "Otherwise the currencies arent those three...
+    write 'Escolha um tipo de moeda válida'.     "Display Message.
+  endif.                                         "Close if.
+else.                                            "Otherwise the Salary is not positive...
+  write 'Seu salário deve ser positivo'.         "Display Message.
+endif.                                           "Close if.
